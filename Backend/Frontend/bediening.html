@@ -1,0 +1,224 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Project</title>
+  <link rel="stylesheet" href="style/Lichten.css">
+  <link rel="stylesheet" href="style/screens.css">
+  <link rel="stylesheet" href="style/toggle.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+  <script src="script/dataHandler.js"></script>
+  <script src="script/appje.js"></script>
+  <!-- <script src="script/appppp.js"></script>-->
+</head>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    toggleNav();
+  })
+  
+  function toggleNav() {
+    let toggleTrigger = document.querySelectorAll(".js-toggle-nav");
+    for (let i = 0; i < toggleTrigger.length; i++) {
+      toggleTrigger[i].addEventListener("click", function() {
+        console.log("ei");
+        document.querySelector("body").classList.toggle("has-mobile-nav");
+      })
+    }
+  }
+</script>
+<body>
+  <div class="c-page">
+    <header class="o-row">
+      <div class="o-container">
+        <div class="c-header">
+          <div class="c-header__logo">
+            <a href="http://192.168.1.22/index.html" class="c-nav__link">
+              <h1 class="c-logo c-lead">
+                SlimLichten
+              </h1>
+            </a>
+          </div>
+          <div class="c-header__nav">
+            <nav class="c-nav">
+              <ul class="o-list c-nav__list">
+                <li class="c-nav__item"><a href="http://192.168.1.22/index.html" class="c-nav__link">Home</a></li>
+                <li class="c-nav__item"><a href="http://192.168.1.22/history.html" class="c-nav__link">Historiek</a></li>
+                <li class="c-nav__item"><a href="http://192.168.1.22/bediening.html" class="c-nav__link">Bediening</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="c-header__mobile-nav-trigger">
+            <button class="o-button-reset c-nav-trigger js-toggle-nav">
+              <svg class="c-nav-trigger__svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>           
+    </header>
+  </div> 
+  <!-- verkeerslicht -->
+  <section class="o-row ">
+    <div class="o-container u-max-width-sm">
+      <article class="o-section">
+        <h2 class="c-lead-top">
+          Bediening
+        </h2>
+        <div class="o-container">
+          <h1>
+            Straatverlichting
+          </h1>
+          <div class="c-intro o-layout o-layout--gutter o-layout--justify-space-between o-layout--align-center"> 
+            <div class="o-layout__item u-flex-basis-auto">
+              <h3>
+                Automatisch
+              </h3>
+            </div>
+            <div class="o-layout__item u-flex-basis-auto u-mb-l">
+              <div data-straatlichten="3" class="c-link-cta-normaal js-straatlichten">
+                Auto
+              </div>
+              
+              <div data-straatlichten="1" class="c-link-cta-normaal js-straatlichten">
+                Uit
+              </div>
+              <div data-straatlichten="2" class="c-link-cta-normaal js-straatlichten">
+                Aan
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="o-container">
+          <h1>
+            verkeerslichten
+          </h1>
+          <div class="c-intro o-layout o-layout--gutter o-layout--justify-space-between o-layout--align-center">
+            <div class="o-layout__item u-flex-basis-auto">
+              <h3>
+                Automatisch
+              </h3>
+            </div>
+            <div class="o-layout__item u-flex-basis-auto u-mb-l">
+              <div data-autoverkeer="3" class="c-link-cta-normaal js-lichten-auto">
+                Knipper
+              </div> 
+              <div data-autoverkeer="2" class="c-link-cta-normaal js-lichten-auto">
+                Uit
+              </div> 
+              <div data-autoverkeer="1" class="c-link-cta-normaal js-lichten-auto">
+                Aan
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="o-section">
+        <div class="o-container">
+          <div class="c-intro o-layout o-layout--gutter o-layout--justify-center o-layout--align-center ">
+            <div class="o-layout__itemtext u-1-of-2-bp1 "> 
+              <h4>
+                Hoofdstraat
+              </h4>
+              <div class="o-layout">
+                <div class="o-layout__itembuttons u-flex-basis-auto">
+                  <div class="licht1bediening">
+                    <div class="lichten1">
+                      <div class="circle" color="red"></div>
+                      <div class="circle" color="yellow"></div>
+                      <div class="circle" color="green"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="o-layout__itembuttons u-flex-basis-auto">
+                  <div data-verkeerslicht="1" class="c-link-cta-rood js-licht-btn">
+                    Rood
+                  </div>
+                  <div data-verkeerslicht="2" class="c-link-cta-oranje js-licht-btn">
+                    Oranje
+                  </div>
+                  <div data-verkeerslicht="3" class="c-link-cta-groen js-licht-btn">
+                    Groen
+                  </div>  
+                </div>
+              </div>    
+            </div>
+            <div class="o-layout__itemtext u-1-of-2-bp1">
+              <h4>
+                Zijstraat
+              </h4>
+              <div class="o-layout">
+                <div class="o-layout__itembuttons u-flex-basis-auto">
+                  <div class="licht3bediening">
+                    <div class="lichten3">
+                      <div class="circle" color="red"></div>
+                      <div class="circle" color="yellow"></div>
+                      <div class="circle" color="green"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="o-layout__itembuttons u-flex-basis-auto">
+                  <div data-bijbaanverkeerslicht="1" class="c-link-cta-rood js-bijbaanlicht-btn">
+                    Rood
+                  </div>
+                  <div data-bijbaanverkeerslicht="2" class="c-link-cta-oranje js-bijbaanlicht-btn">
+                    Oranje
+                  </div>
+                  <div data-bijbaanverkeerslicht="3" class="c-link-cta-groen js-bijbaanlicht-btn">
+                    Groen
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="o-section ">
+        <div class="o-container ">
+          <div class="c-intro o-layout o-layout--gutter o-layout--justify-center o-layout--align-center">
+            <div class="c-center">
+              
+            </div>
+            <div class="o-layout__item u-1-of-4-bp1">
+              
+            </div>
+            <div class="c-center">
+              <div class="o-layout__item u-1-of-4-bp1">
+                <p>
+                  
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <aside class="c-mobile-nav">
+    <div class="c-mobile-nav__bg"></div>
+    <div class="c-mobile-nav__body">
+      <div class="c-mobile-nav__header">
+        <p class="c-logo c-lead">
+          SlimLichten
+        </p>
+        <button class="o-button-reset c-nav-trigger js-toggle-nav">
+          <svg class="c-nav-trigger__svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="c-mobile-nav__nav c-mobile-nav__nav--main">
+        <nav class="c-nav">
+          <ul class="o-list c-nav__list">
+            <li class="c-nav__item"><a href="http://192.168.1.22/index.html" class="c-nav__link">Home</a></li>
+            <li class="c-nav__item"><a href="http://192.168.1.22/history.html" class="c-nav__link">Historiek</a></li>
+            <li class="c-nav__item"><a href="http://192.168.1.22/bediening.html" class="c-nav__link">Bediening</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+</body>
+</html>

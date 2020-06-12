@@ -1,0 +1,1209 @@
+/*------------------------------------*\
+  #FONTS hallo
+\*------------------------------------*/
+@font-face {
+  font-family: "Inter Web";
+  font-weight: 400;
+  src: url("../fonts/Inter-Regular.woff2") format("woff2")
+}
+
+@font-face {
+  font-family: "Inter Web";
+  font-weight: 600;
+  src: url("../fonts/Inter-Regular.woff2") format("woff2")
+}
+
+@font-face {
+  font-family: "Inter Web";
+  font-weight: 700;
+  src: url("../fonts/Inter-Bold.woff2") format("woff2")
+}
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
+/*
+  Generic: Page
+  ---
+  Global page styles + universal box-sizing:
+*/
+
+html {
+  background-color: lightgrey;
+  font-size: 21px;
+  line-height: 32px;
+  font-family: "Inter Web", Helvetica, arial, sans-serif;
+  color: #45484D;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/*
+* Remove text-shadow in selection highlight:
+* https://twitter.com/miketaylr/status/12228805301
+*
+* Customize the background color to match your design.
+*/
+
+
+::selection {
+  background: #186FF2;
+  color: white;
+  text-shadow: none;
+}
+
+/*------------------------------------*\
+#Elements
+\*------------------------------------*/
+
+/*
+  Elements: Images
+  ---
+  Default markup for images to make them responsive
+*/
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+/*
+  Elements: typography
+  ---
+  Default markup for typographic elements
+*/
+
+h1,
+h2,
+h3{
+  font-weight: 700;
+  color: #14161A;
+}
+
+h1 {
+  font-size: 24px;
+  
+  
+}
+
+h2 {
+  font-size: 36px;
+  line-height: 40px;
+  margin: 0 0 24px;
+  
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 0 24px;
+}
+
+h4{
+  font-weight: 700;
+  font-size: 31px;
+}
+
+h5,
+h6 {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0 0 24px;
+}
+
+
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+  margin: 0 0 24px;
+}
+
+ul,
+ol {
+  padding-left: 24px;
+}
+
+li ul,
+li ol {
+  margin-bottom: 0;
+}
+
+blockquote {
+  font-style: italic;
+  font-size: 23px;
+  line-height: 32px;
+  margin: 0 0 24px;
+  font-family: "Times New Roman", serif;
+}
+
+blockquote * {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+figcaption {
+  font-size: 12px;
+  line-height: 16px;
+  padding-top: 8px;
+  color: Grey;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: LightGrey;
+  margin: 0 0 24px;
+}
+
+a {
+  color: #B90000;
+  transition: all .1s ease-in-out;
+}
+
+a:visited,
+a:active {
+  color:#B90000;
+}
+
+a:hover,
+a:focus {
+  color: rgba(24, 111, 242, 0.397);
+}
+
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+
+/*
+  Objects: Row
+  ---
+  Creates a horizontal row that stretches the viewport and adds padding around children
+*/
+
+.o-row {
+  padding: 24px 24px 0;
+  display: flow-root;
+}
+
+.o-row__underline{
+  border-bottom: solid black 1px;
+}
+/* size modifiers */
+
+.o-row--lg {
+  padding-top: 48px;
+  padding-bottom: 24px;
+}
+
+.o-row--xl {
+  padding-top: 72px;
+  padding-bottom: 48px;
+}
+.o-row--xxl {
+  padding-top: 96px;
+  padding-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+  .o-row {
+      padding-left: 48px;
+      padding-right: 48px;
+  }
+
+  .o-row--md {
+      padding-top: 48px;
+      padding-bottom: 24px;
+  }
+
+  .o-row--lg {
+      padding-top: 72px;
+      padding-bottom: 48px;
+  }
+}
+
+@media (min-width: 992px) {
+  .o-row--xl {
+      padding-top: 72px;
+      padding-bottom: 72px;
+  }
+  .o-row--xxl {
+      padding-top: 96px;
+      padding-bottom: 96px;
+  }
+}
+
+/* color modifiers*/
+
+.o-row--darker{
+  background-color: #F2F4F7;
+  color: #45484D;
+}
+
+/*
+  Objects: Container
+  ---
+  Creates a horizontal container that sets de global max-width
+*/
+
+.o-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 64.57142857142857em; /* 64.57142857142857 * 21px = 1356px */
+}
+
+/*
+  Objects: section
+  ---
+  Creates vertical whitespace between adjacent sections inside a row
+*/
+
+/*
+  Objects: section
+  ---
+  Creates vertical whitespace between adjacent sections inside a row
+*/
+
+.o-section {
+  display: flow-root;
+  margin-top: auto;
+  margin-bottom: 24px;
+  margin-left: 34px;
+  margin-right: 34px;
+}
+
+.o-section + .o-section {
+  margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+  .o-section--lg + .o-section--lg,
+  .o-section--xl + .o-section--xl {
+      margin-top: 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .o-section--xl + .o-section--xl {
+      margin-top: 72px;
+  }
+}
+
+/*
+  Objects: Layout
+  ---
+  The layout object provides us with a column-style layout system. This object
+  contains the basic structural elements, but classes should be complemented
+  with width utilities
+*/
+
+.o-layout {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.o-layout__item {
+  flex-basis: 100%;
+  /* margin-left: auto;
+  margin-right: auto; */
+  
+}
+.o-layout__itembuttons {
+  flex-basis: 100%;
+  margin-top:auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.o-layout__itemtext {
+  flex-basis: 100%;
+  /* margin-left: auto;
+  margin-right: auto; */
+  text-align: center;
+}
+/* @media (min-width: 700px){
+  .o-layout__itembuttons{
+    margin-top: 7%;
+  }
+  
+} */
+/* gutter modifiers, these affect o-layout__item too */
+
+.o-layout--gutter {
+  margin: 0 -12px;
+}
+
+.o-layout--gutter > .o-layout__item {
+  padding: 0 12px;
+}
+
+.o-layout--gutter-sm {
+  margin: 0 -6px;
+}
+
+.o-layout--gutter-sm > .o-layout__item {
+  padding: 0 6px;
+}
+
+.o-layout--gutter-lg {
+  margin: 0 -24px;
+}
+
+.o-layout--gutter-lg > .o-layout__item {
+  padding: 0 24px;
+}
+
+/* reverse horizontal row modifier */
+
+.o-layout--row-reverse {
+  flex-direction: row-reverse;
+}
+
+/* Horizontal alignment modifiers*/
+
+.o-layout--justify-start {
+  justify-content: flex-start;
+}
+
+.o-layout--justify-end {
+  justify-content: flex-end;
+}
+
+.o-layout--justify-center {
+  justify-content: center;
+}
+
+.o-layout--justify-space-around {
+  justify-content: space-around;
+}
+
+.o-layout--justify-space-evenly {
+  justify-content: space-evenly;
+}
+
+.o-layout--justify-space-between {
+  justify-content: space-between;
+}
+
+/* Vertical alignment modifiers */
+
+.o-layout--align-start {
+  align-items: flex-start;
+}
+
+.o-layout--align-end {
+  align-items: flex-end;
+}
+
+.o-layout--align-center {
+  align-items: center;
+}
+
+.o-layout--align-baseline {
+  align-items: baseline;
+}
+
+/* Vertical alignment modifiers that only work if there is one than one flex item */
+
+.o-layout--align-content-start {
+  align-content: start;
+}
+
+.o-layout--align-content-end {
+  align-content: end;
+}
+
+.o-layout--align-content-center {
+  align-content: center;
+}
+
+.o-layout--align-content-space-around {
+  align-content: space-around;
+}
+
+.o-layout--align-content-space-between {
+  align-content: space-between;
+}
+
+
+/*
+  Objects: List
+  ---
+  Small reusable object to remove default list styling from lists
+*/
+
+.o-list {
+  list-style: none;
+  padding: 0;
+}
+
+/*
+  Object: Button reset
+  ---
+  Small button reset object
+*/
+
+.o-button-reset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+/*
+  Component: Component name
+  ---
+  Component description
+*/
+
+.c-type-xl{
+  font-size: 66px;
+  line-height: 80px;
+}
+
+.c-type-md{
+  font-size: 24px;
+}
+.c-center{
+  margin-left: auto;
+	margin-right: auto;
+}
+.c-centerr{
+  margin-left: auto;
+}
+.c-inline{
+  display: inline-block;
+}
+.c-flex{
+  display: flex;
+}
+.c-lead{
+  color:#B90000;
+}
+.c-lead-top{
+  margin-top: 24px;
+  color:#B90000;
+}
+/*
+  Component: header
+  ---
+  Main header of the website
+*/
+.c-logo {
+  height: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.c-logo__symbol {
+  height: 100%;
+}
+
+.c-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.c-header__logo {
+  margin-bottom: 25px;
+}
+
+.c-header__nav,
+.c-header__cta {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .c-header__nav,
+  .c-header__cta,
+  .c-header__navv {
+      display: block;
+      
+  }
+
+  .c-header__nav {
+      margin-right: 20px;
+      
+      /* solution 1 */
+      /* margin-left: auto; */
+
+      /* solution 2 */
+      display: flex;
+      flex-grow: 1;
+      justify-content: flex-end;        
+  }
+  .c-header__navv {
+      margin-right: 20px;
+      
+      /* solution 1 */
+      /* margin-left: auto; */
+
+      /* solution 2 */
+      display: flex;
+      flex-grow: 1;
+      justify-content: left;        
+  }
+  .c-header__mobile-nav-trigger {
+    display: none;
+}
+}
+
+/*
+  Component: Nav
+  ---
+  Main navigation of the site
+*/
+
+.c-nav {
+  font-size: 16px;
+  line-height: 24px;
+}
+.c-nav-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  width: 24px;
+  height: 24px;
+}
+.c-nav-trigger__svg {
+  fill: #202024;
+  height: 100%;
+}
+.c-nav__link {
+  text-decoration: none;
+  font-weight: 700;
+  display: block;
+  padding: 8px 0;
+}
+
+.c-nav__link,
+.c-nav__link:visited,
+.c-nav__link:active {
+  color: #14161A;
+}
+
+.c-nav__link:hover,
+.c-nav__link:focus {
+  color: #B90000;
+}
+
+@media (min-width: 992px) {
+  .c-nav__list {
+      display: flex;
+      margin-left: -16px;
+      margin-right: -16px;
+  }
+
+  .c-nav__item--cta {
+      margin-left: 20px;
+  }
+
+  .c-nav__link {
+      padding: 8px 20px;
+  }
+}
+
+/*
+  Component: CTA link
+  ---
+  Small cta link with custom animation
+*/
+.c-link{
+  display: inline-block;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 8px 22px;
+  background-color: lightgrey;;
+}
+.c-link-cta-normaal {
+  border-radius: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  display: inline;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 8px 22px;
+  margin: 2px;
+  background-color: white;;
+}
+
+.c-link-cta-normaal,
+.c-link-cta-normaal:visited,
+.c-link-cta-normaal:active {
+  color: #000;
+}
+
+.c-link-cta-normaal:hover,
+.c-link-cta-normaal:focus {
+  color: #fff;
+  background: #000;
+}
+
+.c-link-cta-normaal:active {
+  background-color: #fff;
+}
+.c-link-ctagroot {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 8px 22px;
+  border-radius: 40px;
+  box-shadow: inset 0 0 0 1px #2E77E6;
+  background-color: lightgrey;;
+}
+.c-link-cta-rood {
+  border-radius: 20px;
+  display: flex;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 8px 22px;
+  margin: 2px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  background-color: #B90000;
+}
+
+.c-link-cta-rood,
+.c-link-cta-rood:visited,
+.c-link-cta-rood:active {
+  color: white;
+}
+
+.c-link-cta-rood:hover,
+.c-link-cta-rood:focus {
+  color: #B90000;
+  background: white;
+}
+
+.c-link-cta-rood:active {
+  background-color: #fff;
+}
+.c-link-cta-oranje {
+  border-radius: 20px;
+  display: flex;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 8px 22px;
+  margin: 4px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  background-color: #8A6900;;
+}
+
+.c-link-cta-oranje,
+.c-link-cta-oranje:visited,
+.c-link-cta-oranje:active {
+  color: white;
+}
+
+.c-link-cta-oranje:hover,
+.c-link-cta-oranje:focus {
+  color: #8A6900;
+  background: white;
+}
+
+.c-link-cta-oranje:active {
+  background-color: #fff;
+}
+.c-link-cta-groen {
+  border-radius: 20px;
+  display: flex;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 8px 22px;
+  margin: 2px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  background-color: #218807;;
+}
+
+.c-link-cta-groen,
+.c-link-cta-groen:visited,
+.c-link-cta-groen:active {
+  color: white;
+}
+
+.c-link-cta-groen:hover,
+.c-link-cta-groen:focus {
+  color: #218807;
+  background: white;
+}
+
+.c-link-cta-groen:active {
+  background-color: #fff;
+}
+.c-link-cta--lg {
+  font-size: 16px;
+  padding: 16px 32px;
+}
+/*
+    Component: mobile nav
+    ---
+    Dedicated mobile nav component
+*/
+.c-page {
+  position: relative;
+  will-change: transform;
+  transition: transform .25s ease;
+}
+.c-mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  transform: translateX(-100%);
+  pointer-events: none;
+  transition: transform .25s ease;
+}
+
+.has-mobile-nav .c-mobile-nav {
+  transform: translate(0);
+  pointer-events: auto;
+}
+.has-mobile-nav .c-page{
+  transform: translateX(25%);
+}
+.c-mobile-nav__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.c-mobile-nav__bg {
+  opacity: 0;
+  position: absolute;
+  background-color: #202024;
+  transition: opacity .25s ease;
+
+}
+
+.has-mobile-nav .c-mobile-nav__bg {
+  opacity: 0.5;
+}
+
+.c-mobile-nav__body {
+  position: relative;
+  padding: 24px;
+  height: 100vh;
+  width: 100vw;
+  background-color: lightgray;
+}
+
+.has-mobile-nav .c-mobile-nav__body {
+}
+
+@media (min-width: 768px) {
+  .c-mobile-nav__body {
+      padding: 48px;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Hide the mobile nav on larger viewports even whent it's open on smaller screens */
+  .c-mobile-nav {
+      display: none !important;
+  }
+}
+
+/*------------------------------------*\
+#UTILITIES
+\*------------------------------------*/
+
+/*
+  Utilities: spacing
+  ---
+  Utility classes to put specific margins and paddings onto elements
+*/
+
+.u-pt-clear {
+  padding-top: 0 !important;
+}
+
+.u-mb-clear {
+  margin-bottom: 0 !important;
+}
+
+.u-mb-xs {
+  margin-bottom: 4px !important;
+}
+
+.u-mb-sm {
+  margin-bottom: 8px !important;
+}
+
+.u-mb-md {
+  margin-bottom: 16px !important;
+}
+.u-mb-l {
+  margin-bottom: 24px !important;
+}
+
+.u-mb-lg {
+  margin-bottom: 32px !important;
+}
+
+.u-mb-xl {
+  margin-bottom: 48px !important;
+}
+
+/*
+  Utilities: max-width
+  ---
+  Utility classes to put specific max widths onto elements
+*/
+.u-max-width-s {
+  max-width: 36em !important;
+}
+
+.u-max-width-sm {
+  max-width: 36em !important;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  background-color: #F2F4F7;
+}
+
+.u-max-width-md {
+  max-width: 44.19047619047619em !important;
+}
+
+.u-max-width-lg {
+  max-width: 50em !important;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  background-color: #F2F4F7;
+}
+
+.u-max-width-xl {
+  max-width: 75em !important;
+}
+
+.u-max-width-none {
+  max-width: none !important;
+}
+@media (min-width: 768px) {
+  .u-max-width-sm {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+/*
+  Utility: Flex
+  ---
+  Utility classes to put specific flex properties onto elements
+  Will be mostly used on o-layout__item
+*/
+.u-align-center{
+  text-align: center;
+}
+
+.u-flex-basis-auto {
+  flex-basis: auto !important;
+}
+
+.u-flex-grow-1 {
+  flex-grow: 1 !important;
+}
+
+.u-1-of-2 {
+  flex-basis: calc(100% / 2) !important;
+}
+
+.u-1-of-3 {
+  flex-basis: calc(100% / 3) !important;
+}
+
+.u-2-of-3 {
+  flex-basis: calc(100% / 3 * 2) !important;
+}
+
+.u-1-of-4 {
+  flex-basis: calc(100% / 4) !important;
+}
+
+.u-3-of-4 {
+  flex-basis: calc(100% / 4 * 3) !important;
+}
+
+.u-1-of-5 {
+  flex-basis: calc(100% / 5) !important;
+}
+
+.u-2-of-5 {
+  flex-basis: calc(100% / 5 * 2) !important;
+}
+
+.u-3-of-5 {
+  flex-basis: calc(100% / 5 * 3) !important;
+}
+
+.u-4-of-5 {
+  flex-basis: calc(100% / 5 * 4) !important;
+}
+
+.u-1-of-6 {
+  flex-basis: calc(100% / 6) !important;
+}
+
+.u-5-of-6 {
+  flex-basis: calc(100% / 6 * 5) !important;
+}
+
+@media (min-width: 576px) {
+  .u-1-of-2-bp1 {
+      flex-basis: calc(100% / 2) !important;
+  }
+  .u-1-of-3-bp1 {
+      flex-basis: calc(100% / 3) !important;
+  }
+  .u-2-of-3-bp1 {
+      flex-basis: calc(100% / 3 * 2) !important;
+  }
+  .u-1-of-4-bp1 {
+      flex-basis: calc(100% / 4) !important;
+  }
+  .u-3-of-4-bp1 {
+      flex-basis: calc(100% / 4 * 3) !important;
+  }
+  .u-1-of-5-bp1 {
+      flex-basis: calc(100% / 5) !important;
+  }
+  .u-2-of-5-bp1 {
+      flex-basis: calc(100% / 5 * 2) !important;
+  }
+  .u-3-of-5-bp1 {
+      flex-basis: calc(100% / 5 * 3) !important;
+  }
+  .u-4-of-5-bp1 {
+      flex-basis: calc(100% / 5 * 4) !important;
+  }
+  .u-1-of-6-bp1 {
+      flex-basis: calc(100% / 6) !important;
+  }
+  .u-5-of-6-bp1 {
+      flex-basis: calc(100% / 6 * 5) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .u-1-of-2-bp2 {
+      flex-basis: calc(100% / 2) !important;
+  }
+  .u-1-of-3-bp2 {
+      flex-basis: calc(100% / 3) !important;
+  }
+  .u-2-of-3-bp2 {
+      flex-basis: calc(100% / 3 * 2) !important;
+  }
+  .u-1-of-4-bp2 {
+      flex-basis: calc(100% / 4) !important;
+  }
+  .u-3-of-4-bp2 {
+      flex-basis: calc(100% / 4 * 3) !important;
+  }
+  .u-1-of-5-bp2 {
+      flex-basis: calc(100% / 5) !important;
+  }
+  .u-2-of-5-bp2 {
+      flex-basis: calc(100% / 5 * 2) !important;
+  }
+  .u-3-of-5-bp2 {
+      flex-basis: calc(100% / 5 * 3) !important;
+  }
+  .u-4-of-5-bp2 {
+      flex-basis: calc(100% / 5 * 4) !important;
+  }
+  .u-1-of-6-bp2 {
+      flex-basis: calc(100% / 6) !important;
+  }
+  .u-5-of-6-bp2 {
+      flex-basis: calc(100% / 6 * 5) !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .u-1-of-2-bp3 {
+      flex-basis: calc(100% / 2) !important;
+  }
+  .u-1-of-3-bp3 {
+      flex-basis: calc(100% / 3) !important;
+  }
+  .u-2-of-3-bp3 {
+      flex-basis: calc(100% / 3 * 2) !important;
+  }
+  .u-1-of-4-bp3 {
+      flex-basis: calc(100% / 4) !important;
+  }
+  .u-3-of-4-bp3 {
+      flex-basis: calc(100% / 4 * 3) !important;
+  }
+  .u-1-of-5-bp3 {
+      flex-basis: calc(100% / 5) !important;
+  }
+  .u-2-of-5-bp3 {
+      flex-basis: calc(100% / 5 * 2) !important;
+  }
+  .u-3-of-5-bp3 {
+      flex-basis: calc(100% / 5 * 3) !important;
+  }
+  .u-4-of-5-bp3 {
+      flex-basis: calc(100% / 5 * 4) !important;
+  }
+  .u-1-of-6-bp3 {
+      flex-basis: calc(100% / 6) !important;
+  }
+  .u-5-of-6-bp3 {
+      flex-basis: calc(100% / 6 * 5) !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .u-1-of-2-bp4 {
+      flex-basis: calc(100% / 2) !important;
+  }
+  .u-1-of-3-bp4 {
+      flex-basis: calc(100% / 3) !important;
+  }
+  .u-2-of-3-bp4 {
+      flex-basis: calc(100% / 3 * 2) !important;
+  }
+  .u-1-of-4-bp4 {
+      flex-basis: calc(100% / 4) !important;
+  }
+  .u-3-of-4-bp4 {
+      flex-basis: calc(100% / 4 * 3) !important;
+  }
+  .u-1-of-5-bp4 {
+      flex-basis: calc(100% / 5) !important;
+  }
+  .u-2-of-5-bp4 {
+      flex-basis: calc(100% / 5 * 2) !important;
+  }
+  .u-3-of-5-bp4 {
+      flex-basis: calc(100% / 5 * 3) !important;
+  }
+  .u-4-of-5-bp4 {
+      flex-basis: calc(100% / 5 * 4) !important;
+  }
+  .u-1-of-6-bp4 {
+      flex-basis: calc(100% / 6) !important;
+  }
+  .u-5-of-6-bp4 {
+      flex-basis: calc(100% / 6 * 5) !important;
+  }
+}
+
+/*------------------------------------*\
+#MEDIA
+\*------------------------------------*/
+
+/*
+  Print styles.
+  ---
+  Inlined to avoid the additional HTTP request:
+  http://www.phpied.com/delay-loading-your-print-css/
+*/
+
+@media print {
+  *,
+  *:before,
+  *:after {
+      background: transparent !important;
+      color: #000 !important;
+      /* Black prints faster:
+                                 http://www.sanbeiji.com/archives/953 */
+      box-shadow: none !important;
+      text-shadow: none !important;
+  }
+  a,
+  a:visited {
+      text-decoration: underline;
+  }
+  a[href]:after {
+      content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+      content: " (" attr(title) ")";
+  }
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+      content: "";
+  }
+  pre {
+      white-space: pre-wrap !important;
+  }
+  pre,
+  blockquote {
+      border: 1px solid #999;
+      page-break-inside: avoid;
+  }
+  /*
+   * Printing Tables:
+   * http://css-discuss.incutio.com/wiki/Printing_Tables
+   */
+  thead {
+      display: table-header-group;
+  }
+  tr,
+  img {
+      page-break-inside: avoid;
+  }
+  p,
+  h2,
+  h3 {
+      orphans: 3;
+      widows: 3;
+  }
+  h2,
+  h3 {
+      page-break-after: avoid;
+  }
+}
