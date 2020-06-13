@@ -20,9 +20,9 @@ if __name__ == "__main__":
         ips = check_output(["hostname","--all-ip-addresses"])
         ips = str(ips) #een string van het ip adress maken
         ip = ips.strip("b'").split(" ") # b' weglaten en de ipadresses splitten waar een spatie staat
-        print(ip[0]) #het eerste ip adress nemen van voor de spatie
+        print(ip[1]) #het eerste ip adress nemen van voor de spatie
         lcd.send_instruction(0x01)
-        lcd.write_message(str(ip[0]))
+        lcd.write_message(str(ip[1]))
         #(while(True):
             
  

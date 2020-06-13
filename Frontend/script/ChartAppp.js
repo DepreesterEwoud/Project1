@@ -74,6 +74,7 @@ const drawChart = function(labels, snelheid){
                             labelString: 'Tijd'
                         },
                         ticks: {
+                            
                             maxRotation: 90
                           }
                     }
