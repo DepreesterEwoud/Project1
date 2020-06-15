@@ -23,12 +23,12 @@ class DataRepository:
 
     @staticmethod
     def read_metingen_snelheid():
-        sql = "SELECT * from tblmeting where sensorid = 1 or sensorid = 2 order by metingid DESC LIMIT 10"
+        sql = "SELECT * from (select * from tblmeting where sensorid = 1 or sensorid = 2 order by metingid desc LIMIT 10) sub order by metingid asc"
         return Database.get_rows(sql)
 
     @staticmethod
     def read_overtredingen():
-        sql = "SELECT * from tblmeting where Waarde > 90 and sensorid = 1 or Waarde > 90 and sensorid = 2 order by metingid DESC limit 10"
+        sql = "SELECT * from (select * from tblmeting where Waarde > 90 and sensorid = 1 or Waarde > 90 and sensorid = 2 order by metingid DESC limit 10) sub order by metingid asc"
         return Database.get_rows(sql)
 
     @staticmethod
