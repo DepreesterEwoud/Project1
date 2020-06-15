@@ -138,7 +138,7 @@ def distance(trigger,echo):
     return distance
 
 def snelheid():
-    print("binnen")
+    
     global callibrate
     global time_for_speed
     global velocity
@@ -146,26 +146,25 @@ def snelheid():
     global snelheid_voertuig
 
     callibrate = time.time()
-    #print(callibrate)
+
     if(GPIO.input(GPIO_BEGIN_PIN_2) == GPIO.LOW):
         
         while GPIO.input(GPIO_END_PIN_2)==GPIO.HIGH:
             time_for_speed = time.time() - callibrate
-            #time.sleep(1)
-            #print("eerste while")
+
         while GPIO.input(GPIO_END_PIN_2)==GPIO.LOW:
             velocity = 20/time_for_speed
-            #print("tweede while")
+
             active = 2
+    print("binnen")
     if(GPIO.input(GPIO_BEGIN_PIN) == GPIO.LOW):
         
         while GPIO.input(GPIO_END_PIN)==GPIO.HIGH:
             time_for_speed = time.time() - callibrate
-            #time.sleep(1)
-            #print("eerste while")
+
         while GPIO.input(GPIO_END_PIN)==GPIO.LOW:
             velocity = 20/time_for_speed
-            #print("tweede while")
+
             active = 1
     
     if(active == 1):
@@ -266,10 +265,10 @@ def switch_light(lamp_id):
 
 @socketio.on('F2B_verander_licht')
 def switch_light(data):
-    #print(data['verkeerslichtid'])
+
     update = DataRepository.update_status_licht(1,data['verkeerslichtid'])
     licht1 = DataRepository.read_status_licht_by_id(1)
-    #print(licht1)
+
     """ licht2 = DataRepository.read_status_licht_by_id(2)
     print(licht1) """
     socketio.emit('B2F_verander_licht', {'licht1':licht1})
@@ -277,7 +276,7 @@ def switch_light(data):
 
 @socketio.on('F2B_verander_bijbaanlicht')
 def switch_light(data):
-    #print(data['verkeerslichtid'])
+
     update = DataRepository.update_status_licht(2,data['verkeerslichtid'])
     licht2 = DataRepository.read_status_licht_by_id(2)
     socketio.emit('B2F_verander_bijbaanlicht', {'licht2':licht2})
@@ -288,13 +287,11 @@ def switch_light(data):
 
 @socketio.on('F2B_verander_autoverkeer')
 def switch_light(data):
-    #print(data['autoverkeerslichten'])
+
     update = DataRepository.update_autoverkeerslichten(1,data['autoverkeerslichten'])
-    #print(update)
-    """ data = DataRepository.read_status_licht_by_id(lamp_id)
-    print(data)
-    socketio.emit('B2F_switch_light', {'tbllocatie': data}) """
-#switch_light(2)
+
+
+
 
 def show_ip():
     lcd = PCF8574(SDA,SCL,0b1110000,lcd_rs,lcd_e)
@@ -321,8 +318,7 @@ def show_verkeerslicht():
     global status_licht_lang
     global status_straatverlichting
     global status_buitendienst
-    #while True:
-    #snelheid()
+
 
 
     
@@ -336,7 +332,7 @@ def show_verkeerslicht():
     
     if(DataRepository.read_status_straatverlichting(1)['autostraatverlichting']==3):
         if(rc_time(pin_to_circuit)>1160):
-            #socketio.emit('B2F_ldrwaarde', {'ldr': rc_time(pin_to_circuit)})
+
             GPIO.output(LED, GPIO.HIGH)
         else:
             GPIO.output(LED, GPIO.LOW)
@@ -349,9 +345,10 @@ def show_verkeerslicht():
     dist_lang_1 = distance(GPIO_TRIGGER_LANG_1, GPIO_ECHO_LANG_1)
     dist_lang_2 = distance(GPIO_TRIGGER_LANG_2, GPIO_ECHO_LANG_2)
     dist_kort = distance(GPIO_TRIGGER_KORT, GPIO_ECHO_KORT)
+    print(dist_kort)
     print(dist_lang_1)
     if(DataRepository.read_autoverkeerslichten(1)['autoverkeerslichten']==1):
-        if(dist_kort < 7 and dist_lang_1 < 7 or dist_lang_2 < 7):
+        if(dist_kort < 18 and dist_lang_1 < 7 or dist_lang_2 < 7):
             if(oranjehoofd != True):
                 if(status_licht_andere!=2):
                     status_licht_andere = 2
@@ -359,13 +356,13 @@ def show_verkeerslicht():
 
                     licht1 = DataRepository.read_status_licht_by_id(1)
                     socketio.emit('B2F_verander_licht', {'licht1': licht1})
-                    #print("update")
+
                 if(DataRepository.read_status_licht_by_id(1)['verkeerslichtid']==2):
-                #print(DataRepository.upate_status_licht(1,1))
+
                     GPIO.output(RED_LANG,GPIO.LOW)
                     GPIO.output(YELLOW_LANG,GPIO.HIGH)
                     GPIO.output(GREEN_LANG,GPIO.LOW)
-                    #switch_light(2)
+
                     time.sleep(3)
                     oranjehoofd = True
 
@@ -374,47 +371,44 @@ def show_verkeerslicht():
                 status_licht_andere = 1
                 DataRepository.update_status_licht(2,3)
                 DataRepository.update_status_licht(1,1)
-                #print("update")
-                #print("Emitting data")
+
                 licht1 = DataRepository.read_status_licht_by_id(2)
                 licht2 = DataRepository.read_status_licht_by_id(1)
-                #print(data)
+
                 socketio.emit('B2F_switch_light', {'licht1': licht1, 'licht2': licht2})
-                #switch_light(2)
-            #print("buiten")
-            #print(DataRepository.read_status_licht_by_id(2))
+
             if(DataRepository.read_status_licht_by_id(2)['verkeerslichtid']==3 and DataRepository.read_status_licht_by_id(1)['verkeerslichtid']==1):
                 print("Niet aan het updaten")
-                #Groen licht
+
                 GPIO.output(RED_KORT,GPIO.LOW)
                 GPIO.output(YELLOW_KORT,GPIO.LOW)
                 GPIO.output(GREEN_KORT,GPIO.HIGH)
                 GPIO.output(RED_LANG,GPIO.HIGH)
                 GPIO.output(YELLOW_LANG,GPIO.LOW)
                 GPIO.output(GREEN_LANG,GPIO.LOW)
-                # switch_light(2)
+
                 rood_kort = False
-                #print(rood_kort,"jhzfbzhjfb")
+
         else:
             if(rood_kort != True):
-                #print("oranje")
+
                 if(status_licht!=2):
                     status_licht = 2
                     DataRepository.update_status_licht(2,2)
 
                     licht1 = DataRepository.read_status_licht_by_id(2)
                     socketio.emit('B2F_verander_bijbaanlicht', {'licht2': licht1})
-                    #print("update")
+
                 if(DataRepository.read_status_licht_by_id(2)['verkeerslichtid']==2):
-                #print(DataRepository.upate_status_licht(1,1))
+
                     GPIO.output(RED_KORT,GPIO.LOW)
                     GPIO.output(YELLOW_KORT,GPIO.HIGH)
                     GPIO.output(GREEN_KORT,GPIO.LOW)
-                    #switch_light(2)
+
                     time.sleep(3)
                     rood_kort=True
             else:
-                #print("rood")
+
                 if(status_licht!=1 and status_licht_andere!=3):
                     status_licht = 1
                     status_licht_andere = 3
@@ -423,9 +417,9 @@ def show_verkeerslicht():
 
                     licht1 = DataRepository.read_status_licht_by_id(2)
                     licht2 = DataRepository.read_status_licht_by_id(1)
-                    #print(data)
+
                     socketio.emit('B2F_switch_light', {'licht1': licht1, 'licht2': licht2})
-                    #print("update")
+
                 if(DataRepository.read_status_licht_by_id(2)['verkeerslichtid']==1 and DataRepository.read_status_licht_by_id(1)['verkeerslichtid']==3):
                     GPIO.output(RED_KORT,GPIO.HIGH)
                     GPIO.output(YELLOW_KORT,GPIO.LOW)
@@ -435,9 +429,9 @@ def show_verkeerslicht():
                     GPIO.output(GREEN_LANG,GPIO.HIGH)
 
                     oranjehoofd = False
-                    #switch_light(2)
 
-        if(dist_kort < 7):
+
+        if(dist_kort < 18):
             if(oranjehoofd_kort != True):
                 if(status_licht_lang!=2):
                     status_licht_lang = 2
@@ -445,13 +439,13 @@ def show_verkeerslicht():
 
                     licht1 = DataRepository.read_status_licht_by_id(1)
                     socketio.emit('B2F_verander_licht', {'licht1': licht1})
-                    #print("update")
+
                 if(DataRepository.read_status_licht_by_id(1)['verkeerslichtid']==2):
-                #print(DataRepository.upate_status_licht(1,1))
+
                     GPIO.output(RED_LANG,GPIO.LOW)
                     GPIO.output(YELLOW_LANG,GPIO.HIGH)
                     GPIO.output(GREEN_LANG,GPIO.LOW)
-                    #switch_light(2)
+
                     time.sleep(3)
                     oranjehoofd_kort = True
 
@@ -463,43 +457,40 @@ def show_verkeerslicht():
 
                 licht1 = DataRepository.read_status_licht_by_id(2)
                 licht2 = DataRepository.read_status_licht_by_id(1)
-                #print(data)
+
                 socketio.emit('B2F_switch_light', {'licht1': licht1, 'licht2': licht2})
                 print("update")
-                #switch_light(2)
-            #print("buiten")
-            #print(DataRepository.read_status_licht_by_id(2))
+
+
             if(DataRepository.read_status_licht_by_id(2)['verkeerslichtid']==3 and DataRepository.read_status_licht_by_id(1)['verkeerslichtid']==1):
                 print("Niet aan het updaten")
-                #Groen licht
+
                 GPIO.output(RED_KORT,GPIO.LOW)
                 GPIO.output(YELLOW_KORT,GPIO.LOW)
                 GPIO.output(GREEN_KORT,GPIO.HIGH)
                 GPIO.output(RED_LANG,GPIO.HIGH)
                 GPIO.output(YELLOW_LANG,GPIO.LOW)
                 GPIO.output(GREEN_LANG,GPIO.LOW)
-                # switch_light(2)
+
                 rood_lang = False
         else:
             if(rood_lang != True):
-                #print("oranje")
+
                 if(status_licht_kort!=2):
                     status_licht_kort = 2
                     DataRepository.update_status_licht(2,2)
 
                     licht1 = DataRepository.read_status_licht_by_id(2)
                     socketio.emit('B2F_verander_bijbaanlicht', {'licht2': licht1})
-                    #print("update")
+
                 if(DataRepository.read_status_licht_by_id(2)['verkeerslichtid']==2):
-                #print(DataRepository.upate_status_licht(1,1))
+
                     GPIO.output(RED_KORT,GPIO.LOW)
                     GPIO.output(YELLOW_KORT,GPIO.HIGH)
                     GPIO.output(GREEN_KORT,GPIO.LOW)
-                    #switch_light(2)
                     time.sleep(3)
                     rood_lang=True
             else:
-                #print("rood")
                 if(status_licht_kort!=1 and status_licht_lang!=3):
                     status_licht_kort = 1
                     status_licht_lang = 3
@@ -508,9 +499,8 @@ def show_verkeerslicht():
 
                     licht1 = DataRepository.read_status_licht_by_id(2)
                     licht2 = DataRepository.read_status_licht_by_id(1)
-                    #print(data)
                     socketio.emit('B2F_switch_light', {'licht1': licht1, 'licht2': licht2})
-                    #print("update")
+
                 if(DataRepository.read_status_licht_by_id(2)['verkeerslichtid']==1 and DataRepository.read_status_licht_by_id(1)['verkeerslichtid']==3):
                     GPIO.output(RED_KORT,GPIO.HIGH)
                     GPIO.output(YELLOW_KORT,GPIO.LOW)
@@ -562,7 +552,6 @@ def show_verkeerslicht():
 
             licht1 = DataRepository.read_status_licht_by_id(2)
             licht2 = DataRepository.read_status_licht_by_id(1)
-            #print(data)
             socketio.emit('B2F_switch_light', {'licht1': licht1, 'licht2': licht2})
             status_buitendienst = 1
 
@@ -580,20 +569,11 @@ def show_verkeerslicht():
             GPIO.output(RED_LANG,GPIO.LOW)
             GPIO.output(YELLOW_LANG,GPIO.LOW)
             GPIO.output(GREEN_LANG,GPIO.LOW)
-            #time.sleep(0.5)
-        #rint ("Measured Distance = %.1f cm" % dist_lang_1)
-        #time.sleep(1)"""
-    """ data = DataRepository.read_status_licht_by_id(2)
-    print(data)  """
     Timer(0.1,show_verkeerslicht).start()
-    #Timer(0.1,snelheid).start()
-show_ip()
+#show_ip()
 show_verkeerslicht()
 snelheid()
-#Timer(1, show_verkeerslicht).start()
 
 if __name__ == '__main__':
-    #print("test binnen main")
     socketio.run(app, debug=False, host='0.0.0.0', port=5000)
-    #print("test na socketio")
     
